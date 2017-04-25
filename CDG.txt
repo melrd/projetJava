@@ -1,0 +1,33 @@
+Fonctionnalité
+	dessiner différentes formes
+		ligne
+		polygone
+		cercle
+		ellipse
+	pas de doublon de forme dans une meme image
+	pas de doublon d image dans le dessin
+	calcul périmètre & aire -> image & dessin
+	transformation -> sur image & dessin -> tout bouge
+		homothétie (agrandissement)
+		translation
+		rotation
+		symétrie centrale et axiale
+	clonage d un dessin
+	tri des formes d une image
+		périmètre
+		aire
+		distance à l'origine
+
+Afficher
+	possibilité de forme
+	périmètre & aire
+	possibilité de clonage
+	possibilité de transformation
+
+Sécurité
+	pas de doublon d'image dans le dessin
+	pas de doublon de forme dans l image
+
+Vocabulaire
+	image -> mouton
+	dessin -> fresque
