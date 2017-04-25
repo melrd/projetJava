@@ -1,0 +1,9 @@
+cd chemin -> accès mémoire
+mkdir -> créé nouveau dossier
+
+git clonne https -> copie les fichiers
+
+git add .
+git commit -m  "message"
+git pull -> met à jour
+git push -> met tes données
