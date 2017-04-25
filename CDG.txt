@@ -18,16 +18,22 @@ Fonctionnalité
 		aire
 		distance à l'origine
 
+
 Afficher
 	possibilité de forme
 	périmètre & aire
 	possibilité de clonage
 	possibilité de transformation
 
+
 Sécurité
 	pas de doublon d'image dans le dessin
 	pas de doublon de forme dans l image
 
+
 Vocabulaire
 	image -> mouton
 	dessin -> fresque
+
+
+libraire graphique deja existante
