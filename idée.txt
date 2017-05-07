@@ -1,0 +1,8 @@
+bouton.setEnabled (bool) -> définit l utilisabilité ou non
+
+JLabel poour pouvoir écrire dessus
+	private JLabel label = new JLabel ();	
+	Font police = new ("police", type, taille");
+	this.label.setFont(police);
+	this.label.setHorizontalAlignement (JLabel.posiiton);
+	this.getContentPane().add(this.label);
