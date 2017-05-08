@@ -6,13 +6,21 @@ import javax.swing.JPanel;
 import javafx.scene.input.MouseEvent;
 
 public class Panneau extends JPanel {
+	private String forme = "";
 	
 	public void paintComponent(Graphics g){
-		int x1 = this.getWidth()/4; //centre l'objet
-	    int y1 = this.getHeight()/4;
-	    g.drawOval(x1, y1, x1*2, y1 * 2);
+		if (this.forme.equals("CARRE") || this.forme.equals("CARRÉ"))
+			g.fillRect(0,0,50,50);
+		if (this.forme.equals("ROND"))
+			g.fillOval(10, 10, 50, 80);
+		if(this.forme.equals("POLYGONE"))
+			g.fillPolygon(null);
 	}
-
+	
+	public void setForme (String form){
+		this.forme = form.toUpperCase();
+		paintComponent(null);
+	}
 }
 
 /*

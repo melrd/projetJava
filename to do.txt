@@ -1,0 +1,4 @@
+pinceau
+couleur
+remplir
+effacer
