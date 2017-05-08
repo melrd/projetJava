@@ -6,3 +6,17 @@ JLabel poour pouvoir écrire dessus
 	this.label.setFont(police);
 	this.label.setHorizontalAlignement (JLabel.posiiton);
 	this.getContentPane().add(this.label);
+
+menu
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu forme = new JMenu ("Forme");
+	private JMenuItem polygone = new JMenuItem ("Polygone");
+	private JCheckBoxMenuItem nom = new JCheckBoxMenuItem ("Nom");
+	private JRadioBoxMenuItem nom = new JRadioBoxMenuItem ("Nom");
+
+	this.polygone.add(nom);
+	this.modification.add(polygone);
+	// création du menu
+	this.menuBar.add(forme);
+	//ajout du menu
+	this.setJMenuBar(menuBar);

@@ -13,14 +13,15 @@ import javax.swing.JPanel;
 public class Fenetre extends JFrame implements ActionListener {
   private Panneau pan = new Panneau();
   private JPanel container = new JPanel();
-  
   private JMenuBar menuBar = new JMenuBar();
   
+  // création des menus
   private JMenu forme = new JMenu ("Forme");
   private JMenu calcul = new JMenu ("Calcul");
   private JMenu modification = new JMenu ("Modification");
   private JMenu copie = new JMenu ("Copie");
   
+  // créations des sous menu
   private JMenuItem carre = new JMenuItem ("Carré");
   private JMenuItem rond = new JMenuItem ("Rond");
   private JMenuItem ligne = new JMenuItem ("Ligne");
@@ -35,13 +36,24 @@ public class Fenetre extends JFrame implements ActionListener {
   
   
   public Fenetre(){
-	
 	// intitialisation de la fenêtre
     this.setTitle("Projet JAVA L3");
     this.setSize(800, 700);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
     this.setLocationRelativeTo(null);
     
+    //positionnement
+    container.setBackground(Color.red);
+    container.setLayout(new BorderLayout());
+    container.add(pan, BorderLayout.CENTER);
+    
+    // permet de voir
+    this.setContentPane(container);
+    this.initMenu();
+    this.setVisible(true);   
+  }
+  
+  private void initMenu(){
     // ajout des sous menu
     this.forme.add(carre);
     this.forme.add(rond);
@@ -63,12 +75,9 @@ public class Fenetre extends JFrame implements ActionListener {
     
     //ajout du menu
     this.setJMenuBar(menuBar);
-    
-    //positionnement
-    container.setBackground(Color.red);
-    container.setLayout(new BorderLayout());
-    container.add(pan, BorderLayout.CENTER);
-    
+  }
+  
+  /*
    // utilisation de la souris ->  class anonymes, sans doutes moins lourd car que une action. si plus faire des class dans la class
    forme.addActionListener(new ActionListener(){
 	public void actionPerformed(ActionEvent e) {
@@ -86,10 +95,5 @@ public class Fenetre extends JFrame implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			  System.out.println("calcul");
 		}});
-   
-   // permet de voir
-    this.setContentPane(container);
-    this.setVisible(true);    
-  }
-
- } 
+*/
+ }
