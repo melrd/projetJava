@@ -2,13 +2,18 @@ package debut;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+import java.awt.Color;
 import javafx.scene.input.MouseEvent;
 
 public class Panneau extends JPanel {
 	private String forme = "";
+	private Color couleurforme = Color.RED;
+	private Color couleurfond = Color.BLUE;
+	private Color couleurcontour = Color.GREEN;
+	
 	
 	public void paintComponent(Graphics g){
+		g.setColor(couleurfond);
 		if (this.forme.equals("CARRE") || this.forme.equals("CARRÉ"))
 			g.fillRect(0,0,50,50);
 		if (this.forme.equals("ROND"))
@@ -21,11 +26,12 @@ public class Panneau extends JPanel {
 		this.forme = form.toUpperCase();
 		paintComponent(null);
 	}
-}
-
-/*
-mouseCliked (MouseEvent e){
-	if (e.getButton() ==MouseEvent.BUTTON){
-		System.out.println("x=%d , y = %d", e.getX(), e.getY());
+	
+	public void setCouleurFond (Color color){
+		this.couleurfond = color;
 	}
-}*/
+	
+	public void setCouleurForme (Color color){
+		this.couleurforme = color;
+	}
+}

@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 
 public class Fenetre extends JFrame implements ActionListener {
   private Panneau pan = new Panneau();
@@ -19,7 +21,8 @@ public class Fenetre extends JFrame implements ActionListener {
   private JMenu forme = new JMenu ("Forme"),
   calcul = new JMenu ("Calcul"),
   modification = new JMenu ("Modification"),
-  copie = new JMenu ("Copie");
+  copie = new JMenu ("Copie"),
+  couleur = new JMenu("Couleur");
   
   // créations des sous menu
   private JMenuItem carre = new JMenuItem ("Carré"),
@@ -32,8 +35,23 @@ public class Fenetre extends JFrame implements ActionListener {
   translation = new JMenuItem ("Translation"),
   symétrie = new JMenuItem ("Symétrie"),
   rotation = new JMenuItem ("Rotation"),
-  agrandissement = new JMenuItem ("Agrandissement");
+  agrandissement = new JMenuItem ("Agrandissement"),
+  fond = new JMenuItem ("Fond"),
+  contour = new JMenuItem ("Contour"),
+  intérieur = new JMenuItem ("Remplissage"),
+  vert = new JMenuItem("Vert");
   
+  // création des couleurs -> temporaire car vraiment moche
+ // private JCheckBoxMenuItem vert = new JCheckBoxMenuItem("vert");
+		  /*rouge = new JCheckBoxMenuItem("rouge"),
+		  blanc = new JCheckBoxMenuItem("blanc"),
+		  jaune = new JCheckBoxMenuItem("jaune"),
+		  bleu = new JCheckBoxMenuItem("bleu");*/
+		  
+  FormeListener fl = new FormeListener();
+  CalculListener calc = new CalculListener();
+  ModifListener modif = new ModifListener();
+  CouleurListener coul = new CouleurListener();
   
   public Fenetre(){
 	// intitialisation de la fenêtre
@@ -43,7 +61,7 @@ public class Fenetre extends JFrame implements ActionListener {
     this.setLocationRelativeTo(null);
     
     //positionnement
-    container.setBackground(Color.red);
+    container.setBackground(Color.BLUE);
     container.setLayout(new BorderLayout());
     container.add(pan, BorderLayout.CENTER);
     
@@ -54,21 +72,23 @@ public class Fenetre extends JFrame implements ActionListener {
   }
   
   private void initMenu(){
-	 // Réactivité des boutons -> faire un listener pour chaque type de bouton?
-    FormeListener fl = new FormeListener();
+	 // Réactivité des boutons
     carre.addActionListener(fl);
     rond.addActionListener(fl);
     polygone.addActionListener(fl);
     ligne.addActionListener(fl);
-    CalculListener calc = new CalculListener();
     aire.addActionListener(calc);
     distance.addActionListener(calc);
     perimetre.addActionListener(calc);
-    ModifListener modif = new ModifListener();
     agrandissement.addActionListener(modif);
     symétrie.addActionListener(modif);
     translation.addActionListener(modif);
     rotation.addActionListener(modif);
+    vert.addActionListener(coul);
+    /*blanc.addActionListener(coul);
+    bleu.addActionListener(coul);
+    jaune.addActionListener(coul);
+    rouge.addActionListener(coul);*/
     
     copie.addActionListener(new ActionListener (){
     	public void actionPerformed (ActionEvent event){
@@ -77,6 +97,21 @@ public class Fenetre extends JFrame implements ActionListener {
     	}
     });
     
+    this.fond.add(vert);
+    /*this.fond.add(blanc);
+    this.fond.add(bleu);
+    this.fond.add(rouge);
+    this.fond.add(jaune);
+    this.contour.add(blanc);
+    this.contour.add(vert);
+    this.contour.add(bleu);
+    this.contour.add(rouge);
+    this.contour.add(jaune);
+    this.intérieur.add(blanc);
+    this.intérieur.add(vert);
+    this.intérieur.add(bleu);
+    this.intérieur.add(rouge);
+    this.intérieur.add(jaune);*/
     // ajout des sous menu
     this.forme.add(carre);
     this.forme.add(rond);
@@ -89,10 +124,14 @@ public class Fenetre extends JFrame implements ActionListener {
     this.modification.add(symétrie);
     this.modification.add(translation);
     this.modification.add(rotation);
+    this.couleur.add(fond);
+    //this.couleur.add(this.contour);
+    //this.couleur.add(this.intérieur);
     
     
     // création du menu
     this.menuBar.add(forme);
+    this.menuBar.add(couleur);
     this.menuBar.add(modification);
     this.menuBar.add(copie);
     this.menuBar.add(calcul);
@@ -121,6 +160,13 @@ public class Fenetre extends JFrame implements ActionListener {
 	 public void actionPerformed (ActionEvent e){
 		 // on verra ca plus tard!
 		 System.out.println("rendre possible les animations");
+	 }
+ }
+ 
+ class CouleurListener implements ActionListener{
+	 public void actionPerformed (ActionEvent e){
+		 // on verra ca plus tard!
+		 System.out.println("changement de couleur");
 	 }
  }
  }
