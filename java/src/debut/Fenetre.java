@@ -5,15 +5,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class Fenetre extends JFrame implements ActionListener {
   private Panneau pan = new Panneau();
-  private JButton forme = new JButton("Dessiner");
-  private JButton modification = new JButton("Modification");
-  private JButton copie = new JButton ("Copie");
-  private JButton calcul = new JButton("Calcul");
   private JPanel container = new JPanel();
+  
+  private JMenuBar menuBar = new JMenuBar();
+  
+  private JMenu forme = new JMenu ("Forme");
+  private JMenu calcul = new JMenu ("Calcul");
+  private JMenu modification = new JMenu ("Modification");
+  private JMenu copie = new JMenu ("Copie");
+  
+  private JMenuItem carre = new JMenuItem ("Carré");
+  private JMenuItem rond = new JMenuItem ("Rond");
+  private JMenuItem ligne = new JMenuItem ("Ligne");
+  private JMenuItem polygone = new JMenuItem ("Polygone");
+  private JMenuItem perimetre = new JMenuItem ("Périmètre");
+  private JMenuItem aire = new JMenuItem ("Aire");
+  private JMenuItem distance = new JMenuItem ("Distance");
+  private JMenuItem translation = new JMenuItem ("Translation");
+  private JMenuItem symétrie = new JMenuItem ("Symétrie");
+  private JMenuItem rotation = new JMenuItem ("Rotation");
+  private JMenuItem agrandissement = new JMenuItem ("Agrandissement");
+  
   
   public Fenetre(){
 	
@@ -23,11 +42,27 @@ public class Fenetre extends JFrame implements ActionListener {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
     this.setLocationRelativeTo(null);
     
-    // ajout des boutons
-    pan.add(forme);
-    pan.add(modification);
-    pan.add(copie);
-    pan.add(calcul);
+    // ajout des sous menu
+    this.forme.add(carre);
+    this.forme.add(rond);
+    this.forme.add(polygone);
+    this.forme.add(ligne);    
+    this.calcul.add(aire);
+    this.calcul.add(distance);
+    this.calcul.add(perimetre);
+    this.modification.add(agrandissement);
+    this.modification.add(symétrie);
+    this.modification.add(translation);
+    this.modification.add(rotation);
+    
+    // création du menu
+    this.menuBar.add(forme);
+    this.menuBar.add(modification);
+    this.menuBar.add(copie);
+    this.menuBar.add(calcul);
+    
+    //ajout du menu
+    this.setJMenuBar(menuBar);
     
     //positionnement
     container.setBackground(Color.red);
