@@ -13,11 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
 public class Fenetre extends JFrame implements ActionListener {
-	private Panneau pan = new Panneau();
-	private JPanel container = new JPanel();
+	//private Panneau pan = new Panneau();
+	//private JPanel container = new JPanel();
 	private JMenuBar menuBar = new JMenuBar();
-	//private DrawPanel drawPanel = new DrawPanel();
-	
+	private DrawPanel drawPanel = new DrawPanel();
+
 	// création des menus
 	private JMenu forme = new JMenu ("Forme"),
 			calcul = new JMenu ("Calcul"),
@@ -40,9 +40,6 @@ public class Fenetre extends JFrame implements ActionListener {
 			symétrie = new JMenuItem ("Symétrie"),
 			rotation = new JMenuItem ("Rotation"),
 			agrandissement = new JMenuItem ("Agrandissement"),
-			fond = new JMenuItem ("Fond"),
-			contour = new JMenuItem ("Contour"),
-			intérieur = new JMenuItem ("Remplissage"),
 			vert = new JMenuItem("Vert"),
 			rouge = new JMenuItem ("Rouge"),
 			blanc = new JMenuItem ("Blanc"),
@@ -76,8 +73,8 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		// permet de voir
 		this.initMenu();
-		this.setContentPane(pan);
-		//this.getContentPane().add(drawPanel, BorderLayout.CENTER);
+		//this.setContentPane(pan);
+		this.getContentPane().add(drawPanel, BorderLayout.CENTER);
 		this.setVisible(true);   
 	}
 
@@ -137,7 +134,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		this.modification.add(rotation);
 		this.couleur.add(couleurfond);
 		this.couleur.add(couleurforme);
-		
+
 		// création du menu
 		this.menuBar.add(forme);
 		this.menuBar.add(couleur);
@@ -152,14 +149,16 @@ public class Fenetre extends JFrame implements ActionListener {
 	}
 
 	class FormeListener implements ActionListener{
-		public void actionPerformed (ActionEvent e){
-			pan.setForme(((JMenuItem)e.getSource()).getText()); 
+		public void actionPerformed(ActionEvent e) {
 			System.out.println("Dessin en cours");
-			// faire avec des positions
-			// faire les couleurs
-		}
+			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
+				if(e.getSource()==carre) 
+					drawPanel.setPointerType("SQUARE");
+				else 
+					drawPanel.setPointerType("CIRCLE");
+			}
+		}    
 	}
-
 	class CalculListener implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			// calculer & afficher le texte dans une partie de l'écran <=> autre class
@@ -175,34 +174,32 @@ public class Fenetre extends JFrame implements ActionListener {
 	}
 
 	class CouleurListener implements ActionListener{
-		public void actionPerformed (ActionEvent e){
+		public void actionPerformed(ActionEvent e) {
 			System.out.println("changement de couleur");
-			if (e.getSource() == vert)
-				pan.setCouleurForme(Color.green);
-			else if (e.getSource() == rouge)
-				pan.setCouleurForme(Color.red);
-			else if (e.getSource() == jaune)
-				pan.setCouleurForme(Color.yellow);
-			else if (e.getSource() == bleu)
-				pan.setCouleurForme(Color.blue);
-			else if (e.getSource() == blanc)
-				pan.setCouleurForme(Color.white);
-		}
+			System.out.println(e.getSource().getClass().getName());
+			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
+				System.out.println("OK !");
+				if(e.getSource()==vert)drawPanel.setPointerColor(Color.green);
+				else if(e.getSource()==bleu)drawPanel.setPointerColor(Color.blue);
+				else if(e.getSource()==jaune)drawPanel.setPointerColor(Color.yellow);
+				else if(e.getSource()==rouge)drawPanel.setPointerColor(Color.red);
+				else drawPanel.setPointerColor(Color.black);
+			}
+		}    
 	}
-	
+
 	class FondCouleurListener implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			System.out.println("changement de couleur");
-			if (e.getSource() == fondVert)
-				pan.setCouleurFond(Color.green);
-			else if (e.getSource() == fondRouge)
-				pan.setCouleurFond(Color.red);
-			else if (e.getSource() == fondJaune)
-				pan.setCouleurFond(Color.yellow);
-			else if (e.getSource() == fondBleu)
-				pan.setCouleurFond(Color.blue);
-			else if (e.getSource() == fondBlanc)
-				pan.setCouleurFond(Color.white);
+			System.out.println(e.getSource().getClass().getName());
+			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
+				System.out.println("OK !");
+				if (e.getSource() == fondVert) drawPanel.setPointerColor(Color.green);
+				else if (e.getSource() == fondRouge) drawPanel.setPointerColor(Color.red);
+				else if (e.getSource() == fondJaune) drawPanel.setPointerColor(Color.yellow);
+				else if (e.getSource() == fondBleu) drawPanel.setPointerColor(Color.blue);
+				else if (e.getSource() == fondBlanc) drawPanel.setPointerColor(Color.white);
+			}
 		}
 	}
 

@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel implements MouseListener {
 
 	private Color pointerColor = Color.red;
 	private String pointerType = "CIRCLE";
