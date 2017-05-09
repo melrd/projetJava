@@ -39,10 +39,14 @@ public class Fenetre extends JFrame implements ActionListener {
   fond = new JMenuItem ("Fond"),
   contour = new JMenuItem ("Contour"),
   intérieur = new JMenuItem ("Remplissage"),
-  vert = new JMenuItem("Vert");
+  vert = new JMenuItem("Vert"),
+  rouge = new JMenuItem ("Rouge"),
+  blanc = new JMenuItem ("Blanc"),
+  bleu = new JMenuItem ("Bleu"),
+  jaune = new JMenuItem ("Jaune");
   
   // création des couleurs -> temporaire car vraiment moche
- // private JCheckBoxMenuItem vert = new JCheckBoxMenuItem("vert");
+  //private JCheckBoxMenuItem vert = new JCheckBoxMenuItem("vert");
 		  /*rouge = new JCheckBoxMenuItem("rouge"),
 		  blanc = new JCheckBoxMenuItem("blanc"),
 		  jaune = new JCheckBoxMenuItem("jaune"),
@@ -85,10 +89,10 @@ public class Fenetre extends JFrame implements ActionListener {
     translation.addActionListener(modif);
     rotation.addActionListener(modif);
     vert.addActionListener(coul);
-    /*blanc.addActionListener(coul);
+    blanc.addActionListener(coul);
     bleu.addActionListener(coul);
     jaune.addActionListener(coul);
-    rouge.addActionListener(coul);*/
+    rouge.addActionListener(coul);
     
     copie.addActionListener(new ActionListener (){
     	public void actionPerformed (ActionEvent event){
@@ -97,21 +101,11 @@ public class Fenetre extends JFrame implements ActionListener {
     	}
     });
     
-    this.fond.add(vert);
-    /*this.fond.add(blanc);
-    this.fond.add(bleu);
-    this.fond.add(rouge);
-    this.fond.add(jaune);
-    this.contour.add(blanc);
-    this.contour.add(vert);
-    this.contour.add(bleu);
-    this.contour.add(rouge);
-    this.contour.add(jaune);
-    this.intérieur.add(blanc);
-    this.intérieur.add(vert);
-    this.intérieur.add(bleu);
-    this.intérieur.add(rouge);
-    this.intérieur.add(jaune);*/
+    this.couleur.add(vert);
+    this.couleur.add(blanc);
+    this.couleur.add(bleu);
+    this.couleur.add(rouge);
+    this.couleur.add(jaune);
     // ajout des sous menu
     this.forme.add(carre);
     this.forme.add(rond);
@@ -124,7 +118,7 @@ public class Fenetre extends JFrame implements ActionListener {
     this.modification.add(symétrie);
     this.modification.add(translation);
     this.modification.add(rotation);
-    this.couleur.add(fond);
+    //this.couleur.add(this.fond);
     //this.couleur.add(this.contour);
     //this.couleur.add(this.intérieur);
     
@@ -165,8 +159,17 @@ public class Fenetre extends JFrame implements ActionListener {
  
  class CouleurListener implements ActionListener{
 	 public void actionPerformed (ActionEvent e){
-		 // on verra ca plus tard!
 		 System.out.println("changement de couleur");
+		 if (e.getSource() == vert)
+			 pan.setCouleurFond(Color.green);
+		 else if (e.getSource() == rouge)
+			 pan.setCouleurFond(Color.red);
+		 else if (e.getSource() == jaune)
+			 pan.setCouleurFond(Color.yellow);
+		 else if (e.getSource() == bleu)
+			 pan.setCouleurFond(Color.blue);
+		 else if (e.getSource() == blanc)
+			 pan.setCouleurFond(Color.white);
 	 }
  }
  }

@@ -2,3 +2,6 @@ pinceau
 couleur
 remplir
 effacer
+
+pouvoir mettre plusieurs formes
+choisir l emplacement des formes
