@@ -64,12 +64,12 @@ public class DrawPanel extends JPanel implements MouseListener {
 	}
 
 	//Efface le contenu
-	public void erase(){
+	/*public void erase(){
 		this.erasing = true;
 		this.points = new ArrayList<Point>();
 		repaint();
-	}
-
+	}*/
+ 
 	//Définit la couleur du pointeur
 	public void setPointerColor(Color c){
 		this.pointerColor = c;
