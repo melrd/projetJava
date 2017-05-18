@@ -12,11 +12,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 
-public class Fenetre extends JFrame implements ActionListener {
-	//private Panneau pan = new Panneau();
-	//private JPanel container = new JPanel();
+public class Fenetre extends JFrame {
 	private JMenuBar menuBar = new JMenuBar();
 	private DrawPanel drawPanel = new DrawPanel();
+	private Forme dessin = new Forme(null);
 
 	// création des menus
 	private JMenu forme = new JMenu ("Forme"),
@@ -24,7 +23,7 @@ public class Fenetre extends JFrame implements ActionListener {
 			modification = new JMenu ("Modification"),
 			copie = new JMenu ("Copie"),
 			couleurfond = new JMenu("Couleur Fond"),
-			couleurforme = new JMenu ("Couleur forme"),
+ 			couleurforme = new JMenu ("Couleur forme"),
 			couleur = new JMenu ("Couleur"),
 			effacer = new JMenu ("Effacer");
 
@@ -32,7 +31,7 @@ public class Fenetre extends JFrame implements ActionListener {
 	private JMenuItem carre = new JMenuItem ("Carré"),
 			rond = new JMenuItem ("Rond"),
 			ligne = new JMenuItem ("Ligne"),
-			polygone = new JMenuItem ("Polygone"),
+			pinceau = new JMenuItem ("Pinceau"),
 			perimetre = new JMenuItem ("Périmètre"),
 			aire = new JMenuItem ("Aire"),
 			distance = new JMenuItem ("Distance"),
@@ -52,6 +51,7 @@ public class Fenetre extends JFrame implements ActionListener {
 			fondJaune = new JMenuItem ("Jaune");
 
 	// Listener
+	PinceauListener pin = new PinceauListener();
 	FormeListener fl = new FormeListener();
 	CalculListener calc = new CalculListener();
 	ModifListener modif = new ModifListener();
@@ -82,7 +82,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		// Réactivité des boutons
 		carre.addActionListener(fl);
 		rond.addActionListener(fl);
-		polygone.addActionListener(fl);
+		pinceau.addActionListener(pin);
 		ligne.addActionListener(fl);
 		aire.addActionListener(calc);
 		distance.addActionListener(calc);
@@ -123,7 +123,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		// ajout des sous menu
 		this.forme.add(carre);
 		this.forme.add(rond);
-		this.forme.add(polygone);
+		this.forme.add(pinceau);
 		this.forme.add(ligne);    
 		this.calcul.add(aire);
 		this.calcul.add(distance);
@@ -148,7 +148,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		this.setJMenuBar(menuBar);
 	}
 
-	class FormeListener implements ActionListener{
+	class PinceauListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Dessin en cours");
 			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
@@ -159,6 +159,16 @@ public class Fenetre extends JFrame implements ActionListener {
 			}
 		}    
 	}
+	
+	class FormeListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Dessin en cours");
+			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
+				dessin.Forme(e.getSource());
+			}
+		}    
+	}
+	
 	class CalculListener implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			// calculer & afficher le texte dans une partie de l'écran <=> autre class

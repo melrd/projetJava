@@ -8,7 +8,7 @@ public class Forme {
 			Px = 8.6,
 			Py = 9.4;
 	
-	public Forme(String str){
+	public Forme(Object str){
 		if (str == "carre")
 			carre(null);
 		if (str == "rond")

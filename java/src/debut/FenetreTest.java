@@ -9,7 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class FenetreTest extends JFrame implements ActionListener {
+public class FenetreTest extends JFrame  {
 	//private Panneau pan = new Panneau();
 	//private JPanel container = new JPanel();
 	private JMenuBar menuBar = new JMenuBar();
@@ -195,6 +195,7 @@ public class FenetreTest extends JFrame implements ActionListener {
 
 	class EffacerListener implements ActionListener{
 		public void actionPerformed (ActionEvent e){
+			// a faire
 			System.out.println("effacer");
 		}
 	}
