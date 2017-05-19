@@ -29,7 +29,7 @@ public class DrawPanel extends JPanel{
 
 	public DrawPanel(){
 
-		this.addMouseListener(new MouseAdapter(){
+		/*this.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
 				points.add(new Point(e.getX() - (pointerSize / 2), e.getY() - (pointerSize / 2), pointerSize, pointerColor, pointerType));
 				repaint();
@@ -44,7 +44,7 @@ public class DrawPanel extends JPanel{
 			}
 
 			public void mouseMoved(MouseEvent e) {}
-		});
+		});*/
 
 	}
 

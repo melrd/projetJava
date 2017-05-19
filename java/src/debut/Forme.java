@@ -1,22 +1,42 @@
 package debut;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
 
 public class Forme {
-	private double Ox = 2.0,
-			Oy = 3.5,
-			Px = 8.6,
-			Py = 9.4;
+	private int Ox = 0,
+			Oy = 5,
+			Px = 6,
+			Py = 4;
 	
-	public Forme(Object str){
+	public Forme(){
+		this.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				Ox = e.getX();
+				Oy = e.getY();
+			}
+		});
+		
+		this.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				Px = e.getX();
+				Py = e.getY();
+			}
+		});
+		
 		if (str == "carre")
 			carre(null);
 		if (str == "rond")
 			rond(null);
 		if (str == "ligne")
 			ligne(null);
-		if (str == "polygone")
-			polygone (null);
+		//if (str == "polygone")
+			//polygone (null);
+		
 	}
 	
 	public double distance(double Ox2, double Oy2, double Px2, double Py2){
@@ -28,13 +48,32 @@ public class Forme {
 	}
 	
 	public void carre (Graphics g){
+		this.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				Ox = e.getX();
+				Oy = e.getY();
+			}
+		});
+		
+		this.addMouseListener(new MouseAdapter(){
+			public void mousePressed(MouseEvent e){
+				Px = e.getX();
+				Py = e.getY();
+			}
+		});
+		
 		double d = distance(Ox, Oy, Px, Py);
 		double c =  d*Math.sqrt(2.0);
-		g.setColor(Color.green); // couleur par défaut
+		//g.setColor(Color.green); // couleur par défaut
 		g.fillRect((int)Ox, (int)Oy, (int)c, (int)c);
 		enregistrement(Ox,Oy,Px,Py, 4*c, Math.pow(c, 2), "carré");
 	}
-	
+
+	private void addMouseListener(MouseAdapter mouseAdapter) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void rond (Graphics g){
 		double r = distance(Ox, Oy, Px, Py);
 		g.setColor(Color.green); // couleur par défaut

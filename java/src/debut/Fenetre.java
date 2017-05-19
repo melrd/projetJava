@@ -14,8 +14,12 @@ import javax.swing.JRadioButtonMenuItem;
 
 public class Fenetre extends JFrame {
 	private JMenuBar menuBar = new JMenuBar();
-	private DrawPanel drawPanel = new DrawPanel();
-	private Forme dessin = new Forme(null);
+	//private DrawPanel drawPanel = new DrawPanel();
+	private FormeTest dessin = new FormeTest();
+	private JPanel panel = new JPanel();
+	
+	private boolean _point = false,
+			_carre = false;
 
 	// création des menus
 	private JMenu forme = new JMenu ("Forme"),
@@ -52,7 +56,7 @@ public class Fenetre extends JFrame {
 
 	// Listener
 	PinceauListener pin = new PinceauListener();
-	FormeListener fl = new FormeListener();
+	CarreListener dessin_carre = new CarreListener();
 	CalculListener calc = new CalculListener();
 	ModifListener modif = new ModifListener();
 	CouleurListener coul = new CouleurListener();
@@ -66,24 +70,19 @@ public class Fenetre extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		this.setLocationRelativeTo(null);
 
-		//positionnement
-		/*container.setBackground(Color.BLUE);
-		container.setLayout(new BorderLayout());
-		container.add(pan, BorderLayout.CENTER); */
-
 		// permet de voir
 		this.initMenu();
 		//this.setContentPane(pan);
-		this.getContentPane().add(drawPanel, BorderLayout.CENTER);
+		this.getContentPane().add(panel, BorderLayout.CENTER);
 		this.setVisible(true);   
 	}
 
 	private void initMenu(){
 		// Réactivité des boutons
-		carre.addActionListener(fl);
-		rond.addActionListener(fl);
+		carre.addActionListener(dessin_carre);
+		//rond.addActionListener(fl);
 		pinceau.addActionListener(pin);
-		ligne.addActionListener(fl);
+		//ligne.addActionListener(fl);
 		aire.addActionListener(calc);
 		distance.addActionListener(calc);
 		perimetre.addActionListener(calc);
@@ -148,23 +147,22 @@ public class Fenetre extends JFrame {
 		this.setJMenuBar(menuBar);
 	}
 
-	class PinceauListener implements ActionListener{
+	class PinceauListener implements ActionListener{ // FONCTIONNEL
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Dessin en cours");
+			System.out.println("Dessin en cours");/*
+			_point = true;
+			_carre = false;
 			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
-				if(e.getSource()==carre) 
 					drawPanel.setPointerType("SQUARE");
-				else 
-					drawPanel.setPointerType("CIRCLE");
-			}
+			}*/
 		}    
 	}
 	
-	class FormeListener implements ActionListener{
+	class CarreListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Dessin en cours");
+			System.out.println("Carre en cours");
 			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
-				dessin.Forme(e.getSource());
+				dessin.formeTest();
 			}
 		}    
 	}
@@ -185,8 +183,7 @@ public class Fenetre extends JFrame {
 
 	class CouleurListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("changement de couleur");
-			System.out.println(e.getSource().getClass().getName());
+			System.out.println("changement de couleur");/*
 			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
 				System.out.println("OK !");
 				if(e.getSource()==vert)drawPanel.setPointerColor(Color.green);
@@ -194,14 +191,13 @@ public class Fenetre extends JFrame {
 				else if(e.getSource()==jaune)drawPanel.setPointerColor(Color.yellow);
 				else if(e.getSource()==rouge)drawPanel.setPointerColor(Color.red);
 				else drawPanel.setPointerColor(Color.black);
-			}
+			}*/
 		}    
 	}
 
 	class FondCouleurListener implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			System.out.println("changement de couleur");
-			System.out.println(e.getSource().getClass().getName());
+			System.out.println("changement de couleur");/*
 			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
 				System.out.println("OK !");
 				if (e.getSource() == fondVert) drawPanel.setPointerColor(Color.green);
@@ -209,7 +205,7 @@ public class Fenetre extends JFrame {
 				else if (e.getSource() == fondJaune) drawPanel.setPointerColor(Color.yellow);
 				else if (e.getSource() == fondBleu) drawPanel.setPointerColor(Color.blue);
 				else if (e.getSource() == fondBlanc) drawPanel.setPointerColor(Color.white);
-			}
+			}*/
 		}
 	}
 
