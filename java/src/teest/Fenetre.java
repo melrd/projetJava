@@ -19,7 +19,7 @@ public class Fenetre extends JFrame{
         calcul = new JMenu ("Calcul"),
         modification = new JMenu ("Modification"),
         copie = new JMenu ("Copie"),
-        couleurfond = new JMenu("Couleur Fond"),
+        /*couleurfond = new JMenu("Couleur Fond"),*/
         couleurforme = new JMenu ("Couleur forme"),
         couleur = new JMenu ("Couleur"),
         effacer = new JMenu ("Effacer");
@@ -41,12 +41,12 @@ public class Fenetre extends JFrame{
         rouge = new JMenuItem ("Rouge"),
         blanc = new JMenuItem ("Blanc"),
         bleu = new JMenuItem ("Bleu"),
-        jaune = new JMenuItem ("Jaune"),
-        fondVert = new JMenuItem("Vert"),
+        jaune = new JMenuItem ("Jaune");
+       /* fondVert = new JMenuItem("Vert"),
         fondRouge = new JMenuItem ("Rouge"),
         fondBlanc = new JMenuItem ("Blanc"),
         fondBleu = new JMenuItem ("Bleu"),
-        fondJaune = new JMenuItem ("Jaune");
+        fondJaune = new JMenuItem ("Jaune");*/
 
     
 	// Listener
@@ -54,14 +54,14 @@ public class Fenetre extends JFrame{
 	CarreListener dessin_carre = new CarreListener();
 	CalculListener calc = new CalculListener();
 	ModifListener modif = new ModifListener();
-	CouleurListener coul = new CouleurListener();
-	FondCouleurListener col = new FondCouleurListener();
+
 	EffacerListener effac = new EffacerListener();
-*/
+        FondCouleurListener col = new FondCouleurListener();*/
         LigneListener lig = new LigneListener();
         CercleListener dessinCercle = new CercleListener();
         EllipseListener dessinEllipse = new EllipseListener();
         PolygoneListener dessinPolygone = new PolygoneListener();
+	CouleurListener coul = new CouleurListener();
         
 	public Fenetre(){
 		// intitialisation de la fenêtre
@@ -74,7 +74,7 @@ public class Fenetre extends JFrame{
                 System.out.println("1b");
 		this.initMenu();
                 System.out.println("2");
-               // this.setContentPane(dessin);
+               //this.setContentPane(dessin);
 
 		this.setVisible(true);
                 System.out.println("3");
@@ -85,12 +85,12 @@ public class Fenetre extends JFrame{
             this.couleurfond.add(fondBlanc);
             this.couleurfond.add(fondBleu);
             this.couleurfond.add(fondRouge);
-            this.couleurfond.add(fondJaune);
+            this.couleurfond.add(fondJaune);*/
             this.couleurforme.add(vert);
             this.couleurforme.add(blanc);
             this.couleurforme.add(bleu);
             this.couleurforme.add(rouge);
-            this.couleurforme.add(jaune); */
+            this.couleurforme.add(jaune); 
             // ajout des sous menu
             this.forme.add(ellipse);
             this.forme.add(rond);
@@ -104,13 +104,13 @@ public class Fenetre extends JFrame{
             this.modification.add(symétrie);
             this.modification.add(translation);
             this.modification.add(rotation);
-            this.couleur.add(couleurfond);
+            this.couleur.add(couleurfond);*/
             this.couleur.add(couleurforme);
-*/
+
 
             // création du menu
-            this.menuBar.add(forme);/*
-            this.menuBar.add(couleur);
+            this.menuBar.add(forme);
+            this.menuBar.add(couleur);/*
             //this.menuBar.add(couleurforme);
             this.menuBar.add(modification);
             this.menuBar.add(effacer);
@@ -124,6 +124,11 @@ System.out.println("1");
             rond.addActionListener(dessinCercle);
             ellipse.addActionListener(dessinEllipse);       
             polygone.addActionListener(dessinPolygone);
+    		vert.addActionListener(coul);
+    		blanc.addActionListener(coul);
+    		bleu.addActionListener(coul);
+    		jaune.addActionListener(coul);
+    		rouge.addActionListener(coul);
            // this.container.add(dessin);
         }
         
@@ -154,15 +159,26 @@ System.out.println("1");
         
         class PolygoneListener implements ActionListener{
             @Override
-            public void actionPerformed(ActionEvent ae) {
-                
-                
+            public void actionPerformed(ActionEvent ae) {                
             nbSommets = Integer.parseInt(JOptionPane.showInputDialog(dessin, "Combien de sommets pour le polygone ?"));
             System.out.println(nbSommets);
             dessin.azer("polygone", nbSommets);
             nbSommets = 0;
-                
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         }
+        
+    	class CouleurListener implements ActionListener{
+    		public void actionPerformed(ActionEvent e) {
+    			System.out.println("changement de couleur");
+    			if(e.getSource().getClass().getName().equals("javax.swing.JMenuItem")){
+    				System.out.println("OK !");
+    				if(e.getSource()==vert)dessin.setPointerColor(Color.green);
+    				else if(e.getSource()==bleu)dessin.setPointerColor(Color.blue);
+    				else if(e.getSource()==jaune)dessin.setPointerColor(Color.yellow);
+    				else if(e.getSource()==rouge)dessin.setPointerColor(Color.red);
+    				else dessin.setPointerColor(Color.black);
+    			}
+    		}    
+    	}
 }
