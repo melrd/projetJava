@@ -54,14 +54,15 @@ public class Fenetre extends JFrame{
 	CarreListener dessin_carre = new CarreListener();
 	CalculListener calc = new CalculListener();
 	ModifListener modif = new ModifListener();
-
+	
 	EffacerListener effac = new EffacerListener();
-        FondCouleurListener col = new FondCouleurListener();*/
+*/
         LigneListener lig = new LigneListener();
         CercleListener dessinCercle = new CercleListener();
         EllipseListener dessinEllipse = new EllipseListener();
+        CouleurListener coul = new CouleurListener();
         PolygoneListener dessinPolygone = new PolygoneListener();
-	CouleurListener coul = new CouleurListener();
+        //FondCouleurListener col = new FondCouleurListener();
         
 	public Fenetre(){
 		// intitialisation de la fenêtre
