@@ -1,6 +1,4 @@
 package teest;
-
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,13 +38,14 @@ public class Dessin extends JPanel{
 
 
 	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		int i = listX.size();
 		System.out.println("7 : nb sommet " + Sommets);
 		g.setColor(pointerColor);
+		
 		if((listX.size() >= 2) && voulu.equals("ligne")){
 			System.out.println("8");
 			g.drawLine(listX.get((listX.size())-2), listY.get((listY.size())-2), listX.get((listX.size())-1), listY.get((listY.size())-1));
-			listX.clear();
-			listY.clear();
 		}
 		else if ((listX.size() >= 2) && voulu.equals("cercle")){
 			int r = (int) Math.sqrt((Math.pow((listX.get((listX.size())-2) -  listX.get((listX.size())-1)),2) + Math.pow((listY.get((listY.size())-2) -  listY.get((listY.size())-1)),2)));
@@ -65,7 +64,7 @@ public class Dessin extends JPanel{
 				
 				if (i == 0)
 					System.out.println("blablabla " + Sommets);					
-				else //if (i != 0)
+				else
 				{
 					g.drawLine(listX.get((listX.size())-2), listY.get((listY.size())-2), listX.get((listX.size())-1), listY.get((listY.size())-1));
 
@@ -83,7 +82,12 @@ public class Dessin extends JPanel{
 		
 		System.out.println("9");
 	}
-
+	
+	public void clear(){    
+        removeAll();
+        repaint(); 
+   }
+	
 	//Définit la couleur du pointeur
 	public void setPointerColor(Color c){
 		this.pointerColor  = c;

@@ -4,6 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import test.Dessin;
+import teest.Fenetre.EffacerListener;
 /**
  *
  * @author acces_libre
@@ -11,7 +14,6 @@ import javax.swing.*;
 public class Fenetre extends JFrame{
     
     private JMenuBar menuBar  = new JMenuBar();
-   // private JPanel container = new JPanel();
     private Dessin dessin = new Dessin();
     private int nbSommets = 0;
     
@@ -19,7 +21,6 @@ public class Fenetre extends JFrame{
         calcul = new JMenu ("Calcul"),
         modification = new JMenu ("Modification"),
         copie = new JMenu ("Copie"),
-        /*couleurfond = new JMenu("Couleur Fond"),*/
         couleurforme = new JMenu ("Couleur forme"),
         couleur = new JMenu ("Couleur"),
         effacer = new JMenu ("Effacer");
@@ -42,27 +43,14 @@ public class Fenetre extends JFrame{
         blanc = new JMenuItem ("Blanc"),
         bleu = new JMenuItem ("Bleu"),
         jaune = new JMenuItem ("Jaune");
-       /* fondVert = new JMenuItem("Vert"),
-        fondRouge = new JMenuItem ("Rouge"),
-        fondBlanc = new JMenuItem ("Blanc"),
-        fondBleu = new JMenuItem ("Bleu"),
-        fondJaune = new JMenuItem ("Jaune");*/
 
-    
 	// Listener
-    /*PinceauListener pin = new PinceauListener();
-	CarreListener dessin_carre = new CarreListener();
-	CalculListener calc = new CalculListener();
-	ModifListener modif = new ModifListener();
-	
-	EffacerListener effac = new EffacerListener();
-*/
         LigneListener lig = new LigneListener();
         CercleListener dessinCercle = new CercleListener();
         EllipseListener dessinEllipse = new EllipseListener();
         CouleurListener coul = new CouleurListener();
         PolygoneListener dessinPolygone = new PolygoneListener();
-        //FondCouleurListener col = new FondCouleurListener();
+        EffacerListener efface = new EffacerListener();
         
 	public Fenetre(){
 		// intitialisation de la fenêtre
@@ -75,18 +63,12 @@ public class Fenetre extends JFrame{
                 System.out.println("1b");
 		this.initMenu();
                 System.out.println("2");
-               //this.setContentPane(dessin);
 
 		this.setVisible(true);
                 System.out.println("3");
 	}
     
         private void initMenu(){
-            /*this.couleurfond.add(fondVert);
-            this.couleurfond.add(fondBlanc);
-            this.couleurfond.add(fondBleu);
-            this.couleurfond.add(fondRouge);
-            this.couleurfond.add(fondJaune);*/
             this.couleurforme.add(vert);
             this.couleurforme.add(blanc);
             this.couleurforme.add(bleu);
@@ -95,28 +77,16 @@ public class Fenetre extends JFrame{
             // ajout des sous menu
             this.forme.add(ellipse);
             this.forme.add(rond);
-            //this.forme.add(pinceau);
             this.forme.add(ligne);
             this.forme.add(polygone);
-            /*this.calcul.add(aire);
-            this.calcul.add(distance);
-            this.calcul.add(perimetre);
-            this.modification.add(agrandissement);
-            this.modification.add(symétrie);
-            this.modification.add(translation);
-            this.modification.add(rotation);
-            this.couleur.add(couleurfond);*/
             this.couleur.add(couleurforme);
 
 
             // création du menu
             this.menuBar.add(forme);
-            this.menuBar.add(couleur);/*
-            //this.menuBar.add(couleurforme);
-            this.menuBar.add(modification);
+            this.menuBar.add(couleur);
             this.menuBar.add(effacer);
-            this.menuBar.add(copie);
-            this.menuBar.add(calcul);*/
+            
 System.out.println("1");
             //ajout du menu
             this.setJMenuBar(menuBar);
@@ -130,12 +100,13 @@ System.out.println("1");
     		bleu.addActionListener(coul);
     		jaune.addActionListener(coul);
     		rouge.addActionListener(coul);
-           // this.container.add(dessin);
+    		effacer.addActionListener(efface);
         }
         
         class LigneListener implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent ae) {
+            	dessin.repaint();
                 dessin.azer("ligne", nbSommets);
                 System.out.println("4");
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -182,4 +153,15 @@ System.out.println("1");
     			}
     		}    
     	}
+    	
+        class EffacerListener implements ActionListener{
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+               dessin = new Dessin();
+               // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        
+        }
 }
