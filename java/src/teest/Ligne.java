@@ -15,7 +15,7 @@ public class Ligne extends Line2D.Double{
     
         super(x1, y1, x2, y2);
         aire = 0;
-        perimetre = 0;// calculer le perimetre !!!!!!!
+        perimetre = 0;// cad la distance
     }
     
     public double getAire(){

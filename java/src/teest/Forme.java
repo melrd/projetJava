@@ -1,14 +1,13 @@
 package teest;
 import java.awt.Color;
-import java.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Forme {
 	private Color couleur = Color.black;
 	private String type = "";
-	private List pointX = new ArrayList ();
-	private List pointY = new ArrayList ();
+	private List<Integer> pointX = new ArrayList<Integer> ();
+	private List<Integer> pointY = new ArrayList <Integer> ();
 	
 	public Forme (String str, Color nom, int X, int Y){
 		this.type = str;

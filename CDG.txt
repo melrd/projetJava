@@ -18,7 +18,6 @@ Fonctionnalité
 		aire
 		distance à l'origine
 
-
 Afficher
 	possibilité de forme
 	périmètre & aire

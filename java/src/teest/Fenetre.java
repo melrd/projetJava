@@ -4,7 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
+import java.util.ArrayList;
+import java.util.List;
 import test.Dessin;
 import teest.Fenetre.EffacerListener;
 /**
@@ -12,10 +13,13 @@ import teest.Fenetre.EffacerListener;
  * @author acces_libre
  */
 public class Fenetre extends JFrame{
-    
     private JMenuBar menuBar  = new JMenuBar();
     private Dessin dessin = new Dessin();
     private int nbSommets = 0;
+    private List <Forme> tableauForme = new ArrayList <Forme>(); 
+    private int nbForme = tableauForme.size();
+    
+    //public Forme [] enregistrement = new Forme[1] ;
     
     private JMenu forme = new JMenu ("Forme"),
         calcul = new JMenu ("Calcul"),
