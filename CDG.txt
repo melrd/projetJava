@@ -1,9 +1,9 @@
 Fonctionnalité
 	dessiner différentes formes
-		ligne
-		polygone
-		cercle
-		ellipse
+		ligne		OK
+		polygone	OK
+		cercle		OK
+		ellipse		OK
 	pas de doublon de forme dans une meme image
 	pas de doublon d image dans le dessin
 	calcul périmètre & aire -> image & dessin
@@ -29,11 +29,3 @@ Afficher
 Sécurité
 	pas de doublon d'image dans le dessin
 	pas de doublon de forme dans l image
-
-
-Vocabulaire
-	image -> mouton
-	dessin -> fresque
-
-
-libraire graphique deja existante

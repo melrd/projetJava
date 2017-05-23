@@ -1,0 +1,13 @@
+Informations sur l'état de la liste
+int size();	Récupère le nombre d'éléments dans la liste
+boolean isEmpty();	Permet de savoir si la liste est vide
+boolean contains (Object o);	Permet de savoir si la liste contient l'objet o
+Object get (int i);	Renvoie l'objet se trouvant à l'indice i
+
+Agir sur les éléments de la liste
+void add (Object o);	Ajoute l'objet o en fin de liste
+void add (int i, Object o);	Ajoute l'objet o à l'indice i
+void set (int i, Object o);	Remplace l'objet de l'indice i par l'objet o
+Object remove (int i);	Retire l'objet de l'indice i et le renvoie
+boolean remove (Object o);	Retire l'objet o de la liste et renvoie true ou false si l'objet n'existe pas dans la liste
+void clear();	Vide complètement la liste
